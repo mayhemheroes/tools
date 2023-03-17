@@ -167,6 +167,7 @@ define_categories! {
     "format",
     "configuration",
     "organizeImports",
+    "project",
     "deserialize",
     "internalError/io",
     "internalError/fs",
@@ -193,8 +194,6 @@ define_categories! {
     "suppressions/unknownRule",
     "suppressions/unused",
     "suppressions/deprecatedSyntax",
-
-
 
     // Used in tests and examples
     "args/fileNotFound",

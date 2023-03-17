@@ -12,11 +12,12 @@ quote = "1.0.14"
 proc-macro2 = { version = "1.0.36", features = ["span-locations"] }
 ungrammar = "1.14.9"
 walkdir = "2.3.2"
-ureq = "2.4.0"
+ureq = { version = "2.4.0", featuers = ["json"], optional = true }
 git2 = { version = "0.15.0", default-features = false }
 filetime = "0.2.15"
 case = "1.0.0"
 pulldown-cmark = { version = "0.9", default-features = false, optional = true }
+serde = { version = "1.0.136", features = ["derive"], optional = true }
 
 rome_rowan = { path = "../../crates/rome_rowan", optional = true }
 rome_analyze = { path = "../../crates/rome_analyze", optional = true }
@@ -36,3 +37,4 @@ rome_service = { path = "../../crates/rome_service", features = ["schemars"], op
 [features]
 configuration = ["rome_analyze", "rome_js_analyze", "rome_js_syntax", "pulldown-cmark"]
 schema = ["schemars", "serde_json", "rome_rowan", "rome_service", "rome_js_syntax", "rome_js_factory", "rome_js_formatter", "rome_json_formatter", "rome_json_parser", "rome_diagnostics"]
+license = ["ureq/json", "serde", "serde_json"]

@@ -74,7 +74,7 @@ impl File for OsFile {
     }
 
     fn file_version(&self) -> i32 {
-        self.version
+        tracing::debug_span!("OsFile::file_version").in_scope(move || self.version)
     }
 }
 

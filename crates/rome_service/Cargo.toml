@@ -31,6 +31,7 @@ rome_json_formatter = { path = "../rome_json_formatter" }
 rome_deserialize = { path = "../rome_deserialize" }
 rome_rowan = { path = "../rome_rowan", features = ["serde"] }
 rome_text_edit = { path = "../rome_text_edit" }
+rome_project = { path = "../rome_project"}
 indexmap = { workspace = true, features = ["serde"] }
 schemars = { version = "0.8.10", features = ["indexmap1"], optional = true }
 tracing = { workspace = true, features = ["attributes"] }
