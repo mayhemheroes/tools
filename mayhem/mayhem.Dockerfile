@@ -10,4 +10,5 @@ RUN cd crates/rome_js_parser && cargo +nightly fuzz build --verbose
 
 # Package Stage
 FROM ubuntu:latest
+COPY --from=builder /src/mayhem/corpus/ /corpus/
 COPY --from=builder /src/crates/rome_js_parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
