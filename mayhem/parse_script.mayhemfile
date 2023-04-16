@@ -1,0 +1,5 @@
+project: tools
+target: parse_script
+
+cmds:
+    - cmd: 

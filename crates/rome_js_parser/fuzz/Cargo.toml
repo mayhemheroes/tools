@@ -1,0 +1,24 @@
+[package]
+name = "fuzz_parser"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.rome_js_parser]
+path = ".."
+
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzz_parse_script"
+path = "fuzz_targets/parse_script.rs"
+test = false
+doc = false
