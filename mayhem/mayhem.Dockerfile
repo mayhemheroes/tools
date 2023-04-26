@@ -12,7 +12,7 @@ RUN cd crates/rome_js_parser && cargo +nightly fuzz build
 FROM ubuntu:latest AS PACKAGE
 
 # Copy the corpora to the final image
-COPY --from=BUILDER /src/mayhem/js_corpus /corpus/javascript
+COPY --from=BUILDER /src/mayhem/corpus_js /corpus/javascript
 
 # Copy the fuzzers to the final image
 COPY --from=BUILDER /src/crates/rome_js_parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
