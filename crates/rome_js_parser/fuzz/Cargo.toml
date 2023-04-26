@@ -1,5 +1,5 @@
 [package]
-name = "fuzz_parser"
+name = "fuzz_rome_js_parser"
 version = "0.0.0"
 authors = ["Automatically generated"]
 publish = false
@@ -9,10 +9,8 @@ edition = "2018"
 cargo-fuzz = true
 
 [dependencies]
-libfuzzer-sys = "0.4"
-
-[dependencies.rome_js_parser]
-path = ".."
+rome_js_parser = { path = ".." }
+libfuzzer-sys = "0.4.0"
 
 [workspace]
 members = ["."]
