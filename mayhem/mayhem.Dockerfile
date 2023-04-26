@@ -1,14 +1,18 @@
 # Build Stage
-FROM ghcr.io/evanrichter/cargo-fuzz:latest AS builder
+FROM ghcr.io/evanrichter/cargo-fuzz:latest AS BUILDER
 
 # Add source code to the build stage.
 ADD . /src
 WORKDIR /src
 
-# Compile the fuzzers.
-RUN cd crates/rome_js_parser && cargo +nightly fuzz build --verbose
+# Compile the fuzzers
+RUN cd crates/rome_js_parser && cargo +nightly fuzz build
 
-# Package Stage
-FROM ubuntu:latest
-COPY --from=builder /src/mayhem/corpus/ /corpus/
-COPY --from=builder /src/crates/rome_js_parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
+# Package stage
+FROM ubuntu:latest AS PACKAGE
+
+# Copy the corpora to the final image
+COPY --from=BUILDER /src/mayhem/js_corpus /corpus/javascript
+
+# Copy the fuzzers to the final image
+COPY --from=BUILDER /src/crates/rome_js_parser/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_* /fuzzers/
